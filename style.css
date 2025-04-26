@@ -1,5 +1,5 @@
 :root {
-    /* Color Palette */
+    /* Color Palette - Dark Theme (Default) */
     --primary: #6c63ff;
     --primary-dark: #5a52d9;
     --secondary: #00d9ff;
@@ -9,6 +9,13 @@
     --gray: #6c757d;
     --success: #28a745;
     --danger: #dc3545;
+    
+    /* Theme Variables */
+    --bg-main: var(--dark);
+    --bg-secondary: var(--dark-lighter);
+    --text-color: var(--light);
+    --border-color: rgba(255, 255, 255, 0.05);
+}
     
     /* Typography */
     --font-main: 'Inter', sans-serif;
@@ -47,10 +54,19 @@
   
   body {
     font-family: var(--font-main);
-    color: var(--light);
-    background-color: var(--dark);
+    color: var(--text-color);
+    background-color: var(--bg-main);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Light Theme */
+  body.light-theme {
+    --bg-main: #f5f5f7;
+    --bg-secondary: #e9ecef;
+    --text-color: #333;
+    --border-color: rgba(0, 0, 0, 0.1);
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -103,6 +119,14 @@
   section {
     padding: var(--space-xl) 0;
     position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  section.fade-in {
+    opacity: 1;
+    transform: translateY(0);
   }
   
   .container {
@@ -215,13 +239,81 @@
     transform-origin: bottom left;
   }
   
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  
+  #theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--radius-full);
+    transition: all 0.3s ease;
+  }
+  
+  #theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: rotate(15deg);
+  }
+  
+  .light-theme #theme-toggle i.fa-moon {
+    display: none;
+  }
+  
+  .light-theme #theme-toggle i.fa-sun {
+    display: inline-block;
+  }
+  
+  #theme-toggle i.fa-sun {
+    display: none;
+  }
+  
   .mobile-menu-btn {
     display: none;
     background: none;
     border: none;
-    color: var(--light);
+    color: var(--text-color);
     font-size: 1.5rem;
     cursor: pointer;
+  }
+  
+  /* Mobile Menu Styles */
+  @media (max-width: 768px) {
+    .mobile-menu-btn {
+      display: block;
+    }
+    
+    .navbar ul {
+      display: none;
+    }
+    
+    .navbar ul.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: rgba(10, 10, 20, 0.95);
+      padding: 1rem 0;
+      box-shadow: var(--shadow-md);
+      z-index: 1000;
+    }
+    
+    .navbar ul.active li {
+      margin: 0.5rem 0;
+      text-align: center;
+    }
+    
+    .navbar ul.active li a {
+      display: block;
+      padding: 0.5rem 0;
+    }
   }
   
   /* Hero Section */
@@ -316,6 +408,17 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--space-xl);
     align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    .about-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .profile-container {
+      order: -1;
+      margin-bottom: var(--space-lg);
+    }
   }
   
   .about-content {
@@ -526,6 +629,17 @@
     gap: var(--space-xl);
   }
   
+  @media (max-width: 768px) {
+    .contact-container {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+    
+    .contact-info {
+      margin-bottom: var(--space-lg);
+    }
+  }
+  
   .contact-info {
     display: flex;
     flex-direction: column;
@@ -595,6 +709,41 @@
   textarea.form-control {
     min-height: 150px;
     resize: vertical;
+  }
+  
+  /* Scroll to Top Button */
+  #scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+  
+  #scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  #scroll-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(108, 99, 255, 0.5);
   }
   
   /* Footer */

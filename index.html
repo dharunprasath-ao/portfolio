@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rohith | Portfolio</title>
+  <title>Dharun | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
@@ -12,10 +12,10 @@
 
   <div id="starry-background"></div>
 
-  <header
+  <header></header>
     <nav class="navbar">
       <div class="container navbar-content">
-        <a href="#" class="logo">Rohith</a>
+        <a href="#" class="logo">Dharun</a>
         <ul>
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -23,20 +23,26 @@
           <li><a href="#skills">Skills</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <button class="mobile-menu-btn">
-          <i class="fas fa-bars"></i>
-        </button>
+        <div class="navbar-actions">
+          <button id="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+          </button>
+          <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
       </div>
     </nav>
   </header>
 
   <main>
     <!-- Hero Section -->
-    <section>
+    <section id="hero">
       <div class="container">
-        <div>
-          <h1>Hello, I'm <span class="highlight"> Rohith Krishna</span></h1>
-          <p>
+        <div class="hero-content">
+          <h1>Hello, I'm <span class="highlight">Dharun Prasath</span></h1>
+          <p class="hero-description">
             A <strong>Software Developer</strong> and <strong>Machine Learning Enthusiast</strong> passionate about creating innovative solutions that make a difference.
           </p>
           <div class="cta-buttons">
@@ -62,7 +68,7 @@
           </div>
           <div class="profile-container">
             <div class="profile-box">
-              <img src="profile.png" alt="Dharun" class="profile-img">
+              <img src="profile.png" alt="Rohith Krishna" class="profile-img">
             </div>
           </div>
         </div>
@@ -179,13 +185,13 @@
               <div class="contact-icon">
                 <i class="fab fa-github"></i>
               </div>
-              <a href="https://www.https://github.com/dharunprasath-ao" target="_blank" class="contact-link">https://github.com/dharunprasath-ao</a>
+              <a href="https://github.com/dharunprasath-ao" target="_blank" class="contact-link">https://github.com/dharunprasath-ao</a>
             </div>
             <div class="contact-item">
               <div class="contact-icon">
                 <i class="fab fa-linkedin"></i>
               </div>
-              <a href="https://www.linkedin.com/in/dharun-prasath-85282a287" target="_blank" class="contact-link">linkedin.com/in/dharun-prasath</a>
+              <a href="https://www.linkedin.com/in/dharun-prasath-85282a287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="contact-link">linkedin.com/in/dharun-prasath-85282a287</a>
             </div>
           </div>
           <div class="contact-form">
@@ -213,7 +219,7 @@
   <footer>
     <div class="container">
       <div class="social-links">
-        <a href="https://https://github.com/dharunprasath-ao" target="_blank" class="social-link">
+        <a href="https://github.com/dharunprasath-ao" target="_blank" class="social-link">
           <i class="fab fa-github"></i>
         </a>
         <a href="https://www.linkedin.com/in/dharun-prasath-85282a287" target="_blank" class="social-link">
@@ -223,9 +229,13 @@
           <i class="fas fa-envelope"></i>
         </a>
       </div>
-      <p class="footer-text">&copy; 2025 Dharun. All Rights Reserved.</p>
+      <p class="footer-text">&copy; 2025 Dharun Prasath. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <button id="scroll-to-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <script src="script.js"></script>
 </body>

@@ -5,6 +5,8 @@ const navbar = document.querySelector('.navbar');
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navbarLinks = document.querySelectorAll('.navbar ul li a');
 const contactForm = document.getElementById('contactForm');
+const scrollToTopBtn = document.getElementById('scroll-to-top');
+const themeToggleBtn = document.getElementById('theme-toggle');
 
 // Create starry background effect
 function generateStars() {
@@ -19,18 +21,19 @@ function generateStars() {
     const animationDelay = Math.random() * 5;
     
     star.classList.add('star');
-    star.style.width = '${size}px';
-    star.style.height = '${size}px';
-    star.style.left = '${left}%';
-    star.style.top = '${top}%';
-    star.style.animationDelay = '${animationDelay}s';
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.left = `${left}%`;
+    star.style.top = `${top}%`;
+    star.style.animationDelay = `${animationDelay}s`;
     
     starryBackground.appendChild(star);
   }
 }
 
-// Navbar scroll effect
+// Navbar scroll effect and scroll-to-top button visibility
 function handleScroll() {
+  // Navbar effects
   if (window.scrollY > 50) {
     navbar.style.background = 'rgba(10, 10, 20, 0.95)';
     navbar.style.padding = '0.7rem 0';
@@ -39,6 +42,13 @@ function handleScroll() {
     navbar.style.background = 'rgba(10, 10, 20, 0.8)';
     navbar.style.padding = '1rem 0';
     navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+  }
+  
+  // Scroll-to-top button visibility
+  if (window.scrollY > 300) {
+    scrollToTopBtn.classList.add('visible');
+  } else {
+    scrollToTopBtn.classList.remove('visible');
   }
 }
 
@@ -123,6 +133,34 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', handleFormSubmit);
   }
   
+  // Add scroll-to-top button functionality
+  if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+  
+  // Add theme toggle functionality
+  if (themeToggleBtn) {
+    // Check for saved theme preference or use default
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+    }
+    
+    themeToggleBtn.addEventListener('click', () => {
+      // Toggle theme class on body
+      document.body.classList.toggle('light-theme');
+      
+      // Save preference to localStorage
+      const currentTheme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+      localStorage.setItem('theme', currentTheme);
+    });
+  }
+  
   // Initialize scroll animations
   animateSections();
   
@@ -170,7 +208,7 @@ window.addEventListener('scroll', function() {
     if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
       document.querySelectorAll('.navbar ul li a').forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === #${sectionId}) {
+        if (link.getAttribute('href') === `#${sectionId}`) {
           link.classList.add('active');
         }
       });
